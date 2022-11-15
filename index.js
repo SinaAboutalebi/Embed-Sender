@@ -4,6 +4,7 @@
 const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser')
 const dotenv = require("dotenv").config();
 
 const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
@@ -16,7 +17,7 @@ const client = new Client({
   ],
 });
 
-const routes = require("./routes/routes.js");
+//const routes = require("./routes/"); #Routes Not Defined YET!!
 
 const app = express();
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
@@ -38,7 +39,7 @@ app.set("view engine", "ejs");
 app.use("/static", express.static("public"));
 app.use(express.static("public"));
 
-app.use("/", routes);
+//app.use("/", routes);
 
 app.use("*", (req, res) => {
   res.render("404");
@@ -49,7 +50,7 @@ app.use("*", (req, res) => {
 app.listen(process.env.PORT, async () => {
   console.log(
     magenta,
-    "[📶]Server Is Running Properly ....\n[ℹ️]Port : ",
+    "[📶]Server Is Running Properly ....\n [ℹ️]Port : ",
     process.env.PORT
   );
 
