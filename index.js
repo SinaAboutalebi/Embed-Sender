@@ -4,7 +4,7 @@
 const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
-const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv").config();
 
 const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
@@ -17,7 +17,7 @@ const client = new Client({
   ],
 });
 
-//const routes = require("./routes/"); #Routes Not Defined YET!!
+const routes = require("./routes");
 
 const app = express();
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
@@ -39,7 +39,7 @@ app.set("view engine", "ejs");
 app.use("/static", express.static("public"));
 app.use(express.static("public"));
 
-//app.use("/", routes);
+app.use("/", routes);
 
 app.use("*", (req, res) => {
   res.render("404");
@@ -54,7 +54,7 @@ app.listen(process.env.PORT, async () => {
     process.env.PORT
   );
 
-  client.on("ready", () => {
+  client.once("ready", () => {
     console.log(
       blue,
       `[✅] Logged in as ${client.user.tag} (${client.user.id}).`
@@ -63,11 +63,12 @@ app.listen(process.env.PORT, async () => {
 
     client.user.setStatus("idle");
     //client.user.setActivity(process.env.STATUS, { type: "LISTENING" }); #OLD Version
-    client.user.setActivity('Coded By Great0P🖥️', {
+    client.user.setActivity("Coded By Great0P🖥️", {
       type: ActivityType.Watching,
     });
   });
 });
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
 //Bot Login
+
 client.login(process.env.TOKEN);
