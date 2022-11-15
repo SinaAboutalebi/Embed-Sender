@@ -9,8 +9,9 @@ const { EmbedBuilder } = require("discord.js");
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
 //Routes
 
-router.post("/send", async (req, res) => {
+//Set Embeds Router=========================================================//
 
+router.post("/send", async (req, res) => {
   let embed = {
     timestamp: new Date().toISOString(),
   };
@@ -78,10 +79,26 @@ router.post("/send", async (req, res) => {
   )
     .then((res) => res.json())
     .then((json) => {
-      return console.log(json);
+      if (!json.errors) {
+        res.render("success");
+      } else res.render("error");
+      return json;
     });
+});
 
-  res.render("success");
+//Login Router==============================================================//
+router.post("/login", async (req, res) => {
+  if (req.body.password != process.env.PASSWORD) {
+    res.render("login", { data: "BadPass" });
+  } else {
+    var options = {
+      maxAge: 1000 * 60 * 60 * 24, //Set Cookie For a zay
+    };
+    var value = process.env.SECRET_KEY;
+    res.cookie("token", value, options);
+
+    res.redirect("/");
+  }
 });
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
 //Exports Router
