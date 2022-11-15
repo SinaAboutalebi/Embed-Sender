@@ -6,7 +6,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv").config();
 
-const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -60,7 +60,11 @@ app.listen(process.env.PORT, async () => {
     );
     console.log(cyan, "[🖥️] Coded By Great0P🦠");
 
-    client.user.setActivity(process.env.STATUS, { type: "LISTENING" });
+    client.user.setStatus("idle");
+    //client.user.setActivity(process.env.STATUS, { type: "LISTENING" }); #OLD Version
+    client.user.setActivity('Coded By Great0P🖥️', {
+      type: ActivityType.Watching,
+    });
   });
 });
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
