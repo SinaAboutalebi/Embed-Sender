@@ -1,127 +1,130 @@
 body {
-    background: #222D32;
-    font-family: 'Roboto', sans-serif;
+  background: url(/static/images/bg.jpg) no-repeat; 
+  background-size: cover;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.signin {
+  background-color: #d3d3d3;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
-.login-box {
-    margin-top: 75px;
-    height: auto;
-    background: #1A2226;
-    text-align: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+.login {
+  position: relative;
+  height: 440px;
+  width: 330px;
+  margin: auto;
+  padding: 60px 60px;
+  background: url(/static/images/3.gif) no-repeat center center #505050;
+  background-size: cover;
+  box-shadow: 0px 30px 60px -5px #000;
 }
 
-.login-key {
-    height: 100px;
-    font-size: 80px;
-    line-height: 100px;
-    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+form {
+  padding-top: 50px;
 }
 
-.login-title {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 30px;
-    letter-spacing: 2px;
-    margin-top: 15px;
-    font-weight: bold;
-    color: #ECF0F5;
+.active {
+  border-bottom: 2px solid #1161ed;
 }
 
-.login-form {
-    margin-top: 25px;
-    text-align: left;
+h2 {
+  padding-left: 12px;
+  font-size: 22px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  letter-spacing: 2px;
+  display: inline-block;
+  font-weight: 100;
 }
 
-input[type=text] {
-    background-color: #1A2226;
-    border: none;
-    border-bottom: 2px solid #0DB8DE;
-    border-top: 0px;
-    border-radius: 0px;
-    font-weight: bold;
-    outline: 0;
-    margin-bottom: 20px;
-    padding-left: 0px;
-    color: #ECF0F5;
+h2:first-child {
+  padding-left: 0px;
 }
 
-input[type=password] {
-    background-color: #1A2226;
-    border: none;
-    border-bottom: 2px solid #0DB8DE;
-    border-top: 0px;
-    border-radius: 0px;
-    font-weight: bold;
-    outline: 0;
-    padding-left: 0px;
-    margin-bottom: 20px;
-    color: #ECF0F5;
+span {
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: 0.4;
+  display: inline-block;
+  position: relative;
+  top: -65px;
+  transition: all 0.5s ease-in-out;
 }
 
-.form-group {
-    margin-bottom: 40px;
-    outline: 0px;
+.text {
+  border: none;
+  width: 89%;
+  padding: 10px 20px;
+  display: block;
+  height: 15px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  margin-top: 15px;
+  transition: all 0.5s ease-in-out;
 }
 
-.form-control:focus {
-    border-color: inherit;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border-bottom: 2px solid #0DB8DE;
-    outline: 0;
-    background-color: #1A2226;
-    color: #ECF0F5;
+.text:focus {
+  outline: 0;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0);
 }
 
-input:focus {
-    outline: none;
-    box-shadow: 0 0 0;
+.text:focus + span {
+  opacity: 0.6;
 }
 
-label {
-    margin-bottom: 0px;
+input[type="text"],
+input[type="password"] {
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
 }
 
-.form-control-label {
-    font-size: 10px;
-    color: #6C6C6C;
-    font-weight: bold;
-    letter-spacing: 1px;
+input {
+  display: inline-block;
+  padding-top: 20px;
+  font-size: 14px;
 }
 
-.btn-outline-primary {
-    border-color: #0DB8DE;
-    color: #0DB8DE;
-    border-radius: 0px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+h2,
+span {
+  margin-left: 20px;
 }
 
-.btn-outline-primary:hover {
-    background-color: #0DB8DE;
-    right: 0px;
+.signin {
+  background-color: #1161ed;
+  color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  margin-top: 30px;
+  transition: all 0.5s ease-in-out;
+  border: none;
+  text-transform: uppercase;
 }
 
-.login-btm {
-    float: left;
+.signin:hover {
+  background: #4082f5;
+  box-shadow: 0px 4px 35px -5px #4082f5;
+  cursor: pointer;
 }
 
-.login-button {
-    padding-right: 0px;
-    text-align: right;
-    margin-bottom: 25px;
+.signin:focus {
+  outline: none;
 }
 
-.login-text {
-    text-align: left;
-    padding-left: 0px;
-    color: #A2A4A4;
-}
-
-.loginbttm {
-    padding: 0px;
+hr {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  top: 85px;
+  position: relative;
 }
