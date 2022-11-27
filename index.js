@@ -31,13 +31,12 @@ blue = "\x1b[34m";
 //Middle Wares
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.set("view engine", "ejs");
 
 app.use("/static", express.static("public"));
-app.use(express.static("public"));
 
 app.use("/", routes);
 

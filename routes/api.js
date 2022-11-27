@@ -87,6 +87,7 @@ router.post("/send", async (req, res) => {
 
 //Login Router==============================================================//
 router.post("/login", async (req, res) => {
+
   if (req.body.password != process.env.PASSWORD) {
     res.render("login", { data: "BadPass" });
   } else {
@@ -99,6 +100,7 @@ router.post("/login", async (req, res) => {
     res.redirect("/");
   }
 });
+
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
 //Exports Router
 
