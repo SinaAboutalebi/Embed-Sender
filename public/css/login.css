@@ -123,8 +123,3 @@ span {
   outline: none;
 }
 
-hr {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  top: 85px;
-  position: relative;
-}
