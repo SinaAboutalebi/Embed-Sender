@@ -5,6 +5,8 @@ const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
 
+const db = require('../schemas/users');
+
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
 //Routes
 
@@ -88,17 +90,27 @@ router.post("/send", async (req, res) => {
 //Login Router==============================================================//
 router.post("/login", async (req, res) => {
 
-  if (req.body.password != process.env.PASSWORD) {
-    res.render("login", { data: "BadPass" });
-  } else {
-    var options = {
-      maxAge: 1000 * 60 * 60 * 24, //Set Cookie For a zay
-    };
-    var value = process.env.SECRET_KEY;
-    res.cookie("token", value, options);
+  db.find({ username: req.body.username },
 
-    res.redirect("/");
-  }
+    async (err, item) => {
+      if (item.length < 1) {
+        res.render("login", { data: "NotFound" })
+      }
+      else if (item.password = req.body.password) {
+
+        var options = {
+          maxAge: 1000 * 60 * 60 * 24, //Set Cookie For a day
+        };
+        var value = process.env.SECRET_KEY;
+        res.cookie("token", value, options);
+
+        res.redirect("/");
+      }
+      else {
+        res.render("login", { data: "BadPass" });
+      }
+    })
+
 });
 
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//

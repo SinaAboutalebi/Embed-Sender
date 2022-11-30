@@ -18,6 +18,7 @@ const client = new Client({
 });
 
 const routes = require("./routes");
+const mongoose = require("./utility/dbConnection");
 
 const app = express();
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//

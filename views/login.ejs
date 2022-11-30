@@ -11,6 +11,13 @@
 </head>
 
 <body>
+
+  <% if(data==="NotFound" ) { %>
+    <script>
+        alert("User Not Found!")
+        window.location.href = "/"
+    </script>
+<% } %>
     
     <% if(data==="BadPass" ) { %>
         <script>
@@ -26,6 +33,9 @@
 <div class="login">
   <h2 class="active"> sign in </h2>
   <form action="/api/login" method="POST">
+
+    <input type="text" name="username" id="username" class="text">
+    <span>username</span>
 
     <input type="password" name="password" id="password" class="text">
     <span>password</span>
