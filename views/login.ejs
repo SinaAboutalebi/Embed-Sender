@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/login.css"> 
+    <link rel="stylesheet" href="/static/css/tailwind.css"> 
     <!-- <link rel="stylesheet" href="/static/css/output.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
     <title>Embed Builder</title>
 </head>
 
-<body>
+<body class="bg-[url(/static/images/bg.jpg)] bg-no-repeat bg-cover text-white text-sm tracking-wide">
 
   <% if(data==="NotFound" ) { %>
     <script>
@@ -31,17 +31,21 @@
 
 <br>
 <br>
-<div class="login">
-  <h2 class="active"> sign in </h2>
-  <form action="/api/login" method="POST">
+<div class="relative h-[560px] w-[450px] mx-auto p-[70px] bg-[url(/static/images/3.gif)] bg-no-repeat bg-center bg-cover shadow-custom">
+  <h2 class="border-solid border-b-2 border-blue-600 text-[22px] uppercase pb-1.5 pl-3 first:pl-0 ml-3 inline-block tracking-[2px] font-thin"> sign in </h2>
+  <form class="pt-14" action="/api/login" method="POST" autocomplete="off">
 
-    <input type="text" name="username" id="username" class="text">
-    <span>username</span>
+    <div class="group mb-2">
+      <label for="username" class="uppercase block ml-5 text-white/40 mb-2 text-xs transition duration-500 group-focus-within:text-white/80">username</label>
+      <input type="text" name="username" id="username" class="bg-white/10 py-2.5 px-5 w-full rounded-full transition duration-500 focus:bg-white/20">
+    </div>
 
-    <input type="password" name="password" id="password" class="text">
-    <span>password</span>
+    <div class="group">
+      <label for="password" class="uppercase block ml-5 text-white/40 mb-2 text-xs transition duration-500 group-focus-within:text-white/80">password</label>
+      <input type="password" name="password" id="password" class="bg-white/10 py-2.5 px-5 w-full rounded-full transition duration-500 focus:bg-white/20">
+    </div>
 
-    <button  type="submit" class="signin">
+    <button  type="submit" class="uppercase rounded-full block w-full mt-10 h-[42px] bg-blue-600 hover:shadow-custom-button transition-all duration-500">
       Sign In
     </button>
   </form>
