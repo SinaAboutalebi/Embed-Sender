@@ -93,10 +93,10 @@ router.post("/login", async (req, res) => {
   db.find({ username: req.body.username },
 
     async (err, item) => {
-      if (item.length < 1) {
+      if (item.length < 1) { //Check User
         res.render("login", { data: "NotFound" })
       }
-      else if (item.password = req.body.password) {
+      else if (item.password = req.body.password) { //Check Password
 
         var options = {
           maxAge: 1000 * 60 * 60 * 24, //Set Cookie For a day
