@@ -113,6 +113,21 @@ router.post("/login", async (req, res) => {
 
 });
 
+//Logout Router==============================================================//
+router.get("/logout", async (req, res) => {
+
+  let token = req.cookies["token"]; //Cookie
+
+  if (!token) {
+    return res.render("login", { data: "none" });
+  } else {
+    res.clearCookie("token"); //Clear Cookie
+
+    return res.redirect("/");
+  }
+
+});
+
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
 //Exports Router
 

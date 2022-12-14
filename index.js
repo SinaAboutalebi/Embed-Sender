@@ -59,11 +59,11 @@ app.listen(process.env.PORT, async () => {
       blue,
       `[✅] Logged in as ${client.user.tag} (${client.user.id}).`
     );
-    console.log(cyan, "[🖥️] Coded By Great0P🦠");
+    console.log(cyan, "[🖥️] Coded By Savage 0P :)🦠");
 
     client.user.setStatus("idle");
     //client.user.setActivity(process.env.STATUS, { type: "LISTENING" }); #OLD Version
-    client.user.setActivity("Coded By Great0P🖥️", {
+    client.user.setActivity("Coded By Savage 0P :)🖥️", {
       type: ActivityType.Watching,
     });
   });
