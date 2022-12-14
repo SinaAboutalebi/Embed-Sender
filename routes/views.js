@@ -5,6 +5,8 @@ const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
 
+const db = require('../schemas/users');
+
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
 //Routes
 
@@ -12,6 +14,7 @@ const fetch = require("node-fetch");
 
 router.get("/", async (req, res) => {
   let token = req.cookies["token"];
+  let uuid = req.cookies["uuid"];
 
   if (!token) {
     return res.render("login", { data: "none" });
@@ -23,18 +26,27 @@ router.get("/", async (req, res) => {
     return res.render("login", { data: "none" });
   }
 
-  let data = await fetch("https://discordapp.com/api/v9/users/@me/guilds", {
-    method: "GET",
-    headers: {
-      Authorization: `Bot ${process.env.TOKEN}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      return json;
-    });
+  db.findById({ uuid },
 
-  res.render("servers", { data: data });
+    async (err, item) => {
+      if (item.length < 1) { //Check User
+        res.redirect("/api/logout")
+      } else {
+
+        let data = await fetch("https://discordapp.com/api/v9/users/@me/guilds", {
+          method: "GET",
+          headers: {
+            Authorization: `Bot ${item.tkn}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((json) => {
+            return json;
+          });
+
+        res.render("servers", { data: data });
+      }
+    });
 });
 
 //Server View Router========================================================//

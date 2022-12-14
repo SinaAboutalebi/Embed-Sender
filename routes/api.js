@@ -104,6 +104,8 @@ router.post("/login", async (req, res) => {
         var value = process.env.SECRET_KEY;
         res.cookie("token", value, options);
 
+        res.cookie("uuid", item['_id'], options);
+
         res.redirect("/");
       }
       else {
