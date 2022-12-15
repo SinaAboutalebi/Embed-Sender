@@ -66,7 +66,7 @@ router.post("/send", async (req, res) => {
     }
   }
   //Send Embed W/ Discord===================================================//
-
+  
   let data = await fetch(
     `https://discord.com/api/v10/channels/${req.body.channelid}/messages`,
     {

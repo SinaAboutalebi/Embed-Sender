@@ -33,6 +33,7 @@ blue = "\x1b[34m";
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.set("view engine", "ejs");
