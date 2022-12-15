@@ -72,7 +72,7 @@ router.post("/send", async (req, res) => {
     {
       method: "POST",
       headers: {
-        Authorization: `Bot ${process.env.TOKEN}`,
+        Authorization: `Bot ${req.body.tkn}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),

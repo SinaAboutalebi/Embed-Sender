@@ -53,6 +53,7 @@ router.get("/", async (req, res) => {
 
 router.get("/server/:id", async (req, res) => {
   let token = req.cookies["token"];
+  let uuid = req.cookies["uuid"];
 
   if (!token) {
     return res.render("login", { data: "none" });
@@ -64,38 +65,47 @@ router.get("/server/:id", async (req, res) => {
     return res.render("login", { data: "none" });
   }
 
-  let { id } = req.params;
+  db.find({ uuid },
 
-  let data = await fetch(
-    `https://discordapp.com/api/v9/guilds/${id}/channels`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bot ${process.env.TOKEN}`,
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then((json) => {
-      return json;
-    });
+    async (err, item) => {
+      if (item.length < 1) { //Check User
+        res.redirect("/api/logout")
+      } else {
 
-  let roles = await fetch(`https://discordapp.com/api/v9/guilds/${id}/roles`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bot ${process.env.TOKEN}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      return json;
-    });
+        let { id } = req.params;
 
-  if (!data[0]) {
-    res.render("404");
-  } else {
-    res.render("embed", { data: data, roles: roles });
-  }
+        let data = await fetch(
+          `https://discordapp.com/api/v9/guilds/${id}/channels`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bot ${item[0].tkn}`,
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((json) => {
+            return json;
+          });
+
+        let roles = await fetch(`https://discordapp.com/api/v9/guilds/${id}/roles`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bot ${item[0].tkn}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((json) => {
+            return json;
+          });
+
+        if (!data[0]) {
+          res.render("404");
+        } else {
+          res.render("embed", { data: data, roles: roles });
+        }
+      }
+    })
 });
 //---------------------------💔🚬 'Zer0Power 💔🚬---------------------------//
 //Exports Router
