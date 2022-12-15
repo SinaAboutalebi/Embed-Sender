@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
     return res.render("login", { data: "none" });
   }
 
-  db.findById({ uuid },
+  db.find({ uuid },
 
     async (err, item) => {
       if (item.length < 1) { //Check User
@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
         let data = await fetch("https://discordapp.com/api/v9/users/@me/guilds", {
           method: "GET",
           headers: {
-            Authorization: `Bot ${item.tkn}`,
+            Authorization: `Bot ${item[0].tkn}`,
           },
         })
           .then((res) => res.json())

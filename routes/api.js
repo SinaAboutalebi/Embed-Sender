@@ -104,7 +104,7 @@ router.post("/login", async (req, res) => {
         var value = process.env.SECRET_KEY;
         res.cookie("token", value, options);
 
-        res.cookie("uuid", item['_id'], options);
+        res.cookie("uuid", item[0].uuid, options);
 
         res.redirect("/");
       }
@@ -123,7 +123,8 @@ router.get("/logout", async (req, res) => {
   if (!token) {
     return res.render("login", { data: "none" });
   } else {
-    res.clearCookie("token"); //Clear Cookie
+    res.clearCookie("token");
+    res.clearCookie("uuid"); //Clear Cookie
 
     return res.redirect("/");
   }
